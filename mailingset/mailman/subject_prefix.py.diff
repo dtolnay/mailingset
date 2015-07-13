@@ -1,0 +1,81 @@
+17a18,25
+> 
+> # This file has been lightly modified to remove dependencies on parts of GNU
+> # Mailman not important for mailing-set. The original is available at:
+> # http://bazaar.launchpad.net/~mailman-coders/mailman/3.0/view/7341/src/mailman/handlers/subject_prefix.py
+> # For comparison, the original is also provided here as subject_prefix.orig.py
+> # and a diff is provided as subject_prefix.py.diff.
+> 
+> 
+28,29d35
+< from mailman.core.i18n import _
+< from mailman.interfaces.handler import IHandler
+38,41c44
+< 
+< def ascii_header(mlist, msgdata, subject, prefix, prefix_pattern, ws):
+<     if mlist.preferred_language.charset not in ASCII_CHARSETS:
+<         return None
+---
+> def ascii_header(subject, prefix, prefix_pattern, ws):
+55,56c58
+<         with _.using(mlist.preferred_language.code):
+<             subject_text = _('(no subject)')
+---
+>         subject_text = '(no subject)'
+59d60
+<     msgdata['stripped_subject'] = subject_text
+70,71c71,72
+< def all_same_charset(mlist, msgdata, subject, prefix, prefix_pattern, ws):
+<     list_charset = mlist.preferred_language.charset
+---
+> def all_same_charset(subject, prefix, prefix_pattern, ws):
+>     list_charset = 'us-ascii'
+89,90c90
+<         with _.push(mlist.preferred_language.code):
+<             subject_text = _('(no subject)')
+---
+>         subject_text = '(no subject)'
+93d92
+<     msgdata['stripped_subject'] = subject_text
+104,105c103,104
+< def mixed_charsets(mlist, msgdata, subject, prefix, prefix_pattern, ws):
+<     list_charset = mlist.preferred_language.charset
+---
+> def mixed_charsets(subject, prefix, prefix_pattern, ws):
+>     list_charset = 'us-ascii'
+108,109c107
+<         with _.push(mlist.preferred_language.code):
+<             subject_text = _('(no subject)')
+---
+>         subject_text = '(no subject)'
+124,125d121
+<     # The subject text stripped of the prefix, for use in the NNTP gateway.
+<     msgdata['stripped_subject'] = str(make_header(chunks, continuation_ws=ws))
+130,131d125
+< 
+< @implementer(IHandler)
+136c130
+<     description = _('Add a list-specific prefix to the Subject header value.')
+---
+>     description = 'Add a list-specific prefix to the Subject header value.'
+138c132
+<     def process(self, mlist, msg, msgdata):
+---
+>     def process(self, prefix, msg):
+140,142d133
+<         if msgdata.get('isdigest') or msgdata.get('_fasttrack'):
+<             return
+<         prefix = mlist.subject_prefix
+148,149d138
+<         # Save the original Subject.
+<         msgdata['original_subject'] = subject
+170,174d158
+<         # Substitute %d in prefix with post_id
+<         try:
+<             prefix = prefix % mlist.post_id
+<         except TypeError:
+<             pass
+180c164
+<                 mlist, msgdata, subject, prefix, prefix_pattern, ws)
+---
+>                 subject, prefix, prefix_pattern, ws)
