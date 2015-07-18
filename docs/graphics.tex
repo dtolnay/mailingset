@@ -1,0 +1,85 @@
+\documentclass{standalone}
+
+\usepackage[T1]{fontenc} % nicer underscores
+
+\usepackage{preview}
+
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+
+\begin{document}
+
+\begin{preview}
+    \def\firstcircle{(0,1.15cm) circle (1cm)}
+    \def\secondcircle{(0,0) circle (1cm)}
+    \def\boundingrect{(-1cm,-1cm) rectangle (1cm,2.15cm)}
+    \begin{tikzpicture}
+        \draw (-1.2cm,1.35cm) node {\texttt{a}};
+        \draw (-1.2cm,-0.2cm) node {\texttt{b}};
+        \begin{scope}
+            \fill[pattern=north east lines] \firstcircle \secondcircle;
+            \draw \firstcircle;
+            \draw \secondcircle;
+            \draw (0,-1.25cm) node {\texttt{a\_|\_b}};
+        \end{scope}
+        \begin{scope}[shift={(2.25cm,0)}]
+            \begin{scope}
+                \clip \firstcircle;
+                \fill[pattern=north east lines] \secondcircle;
+            \end{scope}
+            \draw \firstcircle;
+            \draw \secondcircle;
+            \draw (0,-1.25cm) node {\texttt{a\_\&\_b}};
+        \end{scope}
+        \begin{scope}[shift={(4.5cm,0cm)}]
+            \begin{scope}[even odd rule]
+                \clip \secondcircle \boundingrect;
+                \fill[pattern=north east lines] \firstcircle;
+            \end{scope}
+            \draw \firstcircle;
+            \draw \secondcircle;
+            \draw (0,-1.25cm) node {\texttt{a\_-\_b}};
+        \end{scope}
+    \end{tikzpicture}
+\end{preview}
+
+\begin{preview}
+    \def\firstcircle{(0,1cm) circle (1cm)}
+    \def\secondcircle{(-0.575cm,0) circle (1cm)}
+    \def\thirdcircle{(0.575cm,0) circle (1cm)}
+    \def\boundingrect{(-1.575cm,-1cm) rectangle (1.575cm,2cm)}
+    \begin{tikzpicture}
+        \begin{scope}
+            \begin{scope}[even odd rule]
+                \clip \thirdcircle \boundingrect;
+                \begin{scope}
+                    \clip \secondcircle;
+                    \fill[pattern=north east lines] \firstcircle;
+                \end{scope}
+            \end{scope}
+            \fill[pattern=north east lines] \thirdcircle;
+            \draw \firstcircle;
+            \draw \secondcircle;
+            \draw \thirdcircle;
+            \draw (0,2.15cm) node {\texttt{a}};
+            \draw (-1.45cm,0.8cm) node {\texttt{b}};
+            \draw (1.4cm,0.8cm) node {\texttt{c}};
+            \draw (0,-1.3cm) node {\texttt{\{a\_\&\_b\}\_|\_c}};
+        \end{scope}
+        \begin{scope}[shift={(3.7cm,0)}]
+            \begin{scope}
+                \clip \firstcircle;
+                \fill[pattern=north east lines] \secondcircle \thirdcircle;
+            \end{scope}
+            \draw \firstcircle;
+            \draw \secondcircle;
+            \draw \thirdcircle;
+            \draw (0,2.15cm) node {\texttt{a}};
+            \draw (-1.45cm,0.8cm) node {\texttt{b}};
+            \draw (1.4cm,0.8cm) node {\texttt{c}};
+            \draw (0,-1.3cm) node {\texttt{a\_\&\_\{b\_|\_c\}}};
+        \end{scope}
+    \end{tikzpicture}
+\end{preview}
+
+\end{document}

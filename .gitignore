@@ -1,0 +1,5 @@
+*.pyc
+_trial_temp/
+build/
+mailingset.egg-info/
+mailingset.log

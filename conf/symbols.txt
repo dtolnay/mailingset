@@ -1,0 +1,3 @@
+alist:AA
+blist:BB
+clist:CC

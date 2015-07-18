@@ -1,0 +1,5 @@
+Pull requests are extremely welcome.
+
+- The config incoming->domain should be treated as a regex if it starts with ^
+  and ends with $.
+- Configurable log levels / verbosity.
