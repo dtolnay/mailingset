@@ -1,4 +1,5 @@
 # Mailing Set
+[![Build Status](https://travis-ci.org/dtolnay/mailingset.svg?branch=master)](https://travis-ci.org/dtolnay/mailingset)
 
 A mailing list server that treates mailing lists as sets and allows mail to be
 sent to the result of set-algebraic expressions on those sets. The union,

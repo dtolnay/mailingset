@@ -15,6 +15,7 @@ setup(name='mailingset',
       license='GNU GPLv3',
       packages=['mailingset'],
       install_requires=[
+                        'netaddr',
                         'twisted',
                         'zope.interface'
                        ] + python2_requires,
