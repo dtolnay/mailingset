@@ -15,11 +15,14 @@
 
 
 import configparser
+import nose
 import os
 
 from twisted.trial import unittest
 
 from mailingset.state import MailingSetState
+
+import helper
 
 
 class StateTest(unittest.TestCase):
@@ -87,12 +90,12 @@ class StateTest(unittest.TestCase):
 
     def test_fail_missing(self):
         expected = 'No such list or person: missing'
-        with self.assertRaisesRegexp(SyntaxError, expected):
+        with helper.AssertFail(self, SyntaxError, expected):
             self.state('missing')
 
     def test_fail_ambiguous(self):
         expected = 'Ambiguous person: yy'
-        with self.assertRaisesRegexp(SyntaxError, expected):
+        with helper.AssertFail(self, SyntaxError, expected):
             self.state('yy')
 
 

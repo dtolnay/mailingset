@@ -77,6 +77,8 @@ Additionally, the following headers are added to every message:
 
 ## Installation
 
+Requires Python 2.6 or 2.7.
+
 1. Clone Mailing Set
 2. run `pip install -e .`
 3. Configure as described in the next section
