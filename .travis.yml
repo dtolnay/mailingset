@@ -11,6 +11,8 @@ install:
 
 script:
     - trial tests/*_test.py
+    - twistd -y bin/mailingset.tac
+    - kill $(cat twistd.pid)
 
 notifications:
     email: false
