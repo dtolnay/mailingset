@@ -12,7 +12,7 @@ setup(name='mailingset',
       description='A mail server that supports set operations on mailing lists.',
       keywords='union intersection difference',
       url='https://github.com/dtolnay/mailingset',
-      license='MIT / X / Expat License',
+      license='GNU GPLv3',
       packages=['mailingset'],
       install_requires=[
                         'twisted',
