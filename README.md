@@ -107,7 +107,7 @@ configuration file is provided.
   - `symbols_file`: Relative or absolute path to file containing mailing list
     symbols for use in subject tags, as described below.
 
-### List membership
+#### List membership
 
 Lists are defined as text files with one address per line. The name of the file
 is the name of the lists.
@@ -132,7 +132,7 @@ Bob would be addressed as `dog-owners_-_bob.q.brown@yourdomain.com`.
 There is no support for reloading mailing list definitions without restarting
 the server.
 
-### List symbols
+#### List symbols
 
 List symbols are used in constructing subject tags. They are configured in a
 text file, typically called `symbols.txt`. The file should look like this:
@@ -146,7 +146,7 @@ be tagged like this:
 
     [SF&(Dog|Cat)] The Original Subject
 
-### Using with Postfix
+#### Using with Postfix
 
 If Postfix is set up to receive incoming mail on your server, you can have it
 forward set-operation mail to Mailing Set by using a transport table. Refer to
@@ -156,7 +156,7 @@ you want in your transport table is:
 
     /^(.*_[&|-]_.*)@/    smtp:[localhost]:2500
 
-### Importing lists from Mailman
+#### Importing lists from Mailman
 
 These commands can be used to export mailing lists from Mailman.
 
