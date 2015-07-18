@@ -6,6 +6,8 @@ intersection, and difference operators are supported. Sending mail to a set
 operation involves specifying a set expression in the local part of the
 recipient email address.
 
+![operators](https://raw.githubusercontent.com/dtolnay/mailingset/master/docs/operators.png)
+
 ## Syntax
 
     somelist_|_otherlist@example.com      (set union)
@@ -35,6 +37,8 @@ relevant.
     sf_-_{dog_-_cat}        San Franciscans, except those owning a dog but not a
                             cat.
     {sf_|_la}_&_dog_&_cat   People in SF or LA who own both dogs and cats.
+
+![parens](https://raw.githubusercontent.com/dtolnay/mailingset/master/docs/parens.png)
 
 ## Bounces
 
