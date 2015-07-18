@@ -20,7 +20,7 @@ class MailingSetState(object):
         """
         Args:
             config: ConfigParser object holding configuration for the
-                mailing-set SMTP server. The entries required here are the path
+                Mailing Set SMTP server. The entries required here are the path
                 to the directory containing list definitions, the path to the
                 file containing mailing list symbols, and the domain used by
                 mailing list addresses.

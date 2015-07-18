@@ -50,7 +50,7 @@ class MailingSetTest(unittest.TestCase):
         self.config.set('data', 'symbols_file', symbols_path)
 
     def _server_proto(self, validate=None):
-        """Creates a mailing-set SMTP server protocol based on self.config.
+        """Creates a Mailing Set SMTP server protocol based on self.config.
 
         Some validation is done on outgoing messages to ensure they comply with
         the outgoing message configuration in self.config. After that, they are
@@ -64,7 +64,7 @@ class MailingSetTest(unittest.TestCase):
                 content of the message.
 
         Returns:
-            An instance of protocol.Protocol implementing the mailing-set SMTP
+            An instance of protocol.Protocol implementing the Mailing Set SMTP
             server protocol.
         """
         def sendmail(server, from_addr, to_addrs, msg, port):
@@ -92,7 +92,7 @@ class MailingSetTest(unittest.TestCase):
             # assertions fail
             return defer.execute(assertions)
 
-        # Construct mailing-set SMTP server protocol
+        # Construct Mailing Set SMTP server protocol
         factory = SetSMTPFactory(self.config, sendmail)
         return factory.buildProtocol(('127.0.0.1', 0))
 

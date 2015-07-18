@@ -22,8 +22,8 @@ class SetSMTPFactory(smtp.SMTPFactory):
     def __init__(self, config, sendmail, *a, **kw):
         """
         Args:
-            config: ConfigParser object holding configuration for the
-                mailing-set SMTP server.
+            config: ConfigParser object holding configuration for the Mailing
+                Set SMTP server.
             sendmail: A function with the same signature as smtp.sendmail which
                 will be called to send outgoing messages. Test code uses this to
                 check assertions on the outgoing messages. Production code
@@ -62,8 +62,8 @@ class SetMessageDelivery(object):
         Args:
             protocol: The protocol governing interaction with client
                 connections.
-            config: ConfigParser object holding configuration for the
-                mailing-set SMTP server.
+            config: ConfigParser object holding configuration for the Mailing
+                Set SMTP server.
             parse: A function taking an email address and returning a pair of
                 subject tag and recipient address set.
             sendmail: A function with the same signature as smtp.sendmail which
@@ -166,8 +166,8 @@ class SetMessage(object):
     def __init__(self, config, address, subject_tag, recipient_set, sendmail):
         """
         Args:
-            config: ConfigParser object holding configuration for the
-                mailing-set SMTP server.
+            config: ConfigParser object holding configuration for the Mailing
+                Set SMTP server.
             address: The original recipient address of the message.
             subject_tag: Tag that will be prepended in square brackets to the
                 message subject to indicate the target set expression.

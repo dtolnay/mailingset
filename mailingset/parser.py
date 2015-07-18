@@ -1,9 +1,9 @@
-"""A simple top-down parser for mailing-set operations.
+"""A simple top-down parser for Mailing Set operations.
 
 This is based on the Pratt parser presented in the article "Simple Top-Down
 Parsing in Python" at: http://effbot.org/zone/simple-top-down-parsing.htm
 
-A mailing-set operation is an arithmetic expression in which leaf nodes are
+A Mailing Set operation is an arithmetic expression in which leaf nodes are
 mailing list names and operators are _|_ for set union, _&_ for set
 intersection, and _-_ for set difference. Curly braces { } are used for
 parenthesization, which is REQUIRED when using more than one type of operator.
@@ -26,7 +26,7 @@ import re
 
 
 def parse(resolver, address):
-    """Parses a mailing-set operation.
+    """Parses a Mailing Set operation.
 
     Args:
         resolver: A function taking a leaf token string (mailing list name or
@@ -62,7 +62,7 @@ def parse(resolver, address):
 
 
 def _expression(tokens, rbp=0):
-    """Parses a stream of mailing-set operation tokens.
+    """Parses a stream of Mailing Set operation tokens.
 
     This is a slightly modified Pratt parser. The modification is that it
     enforces parenthesization when different operators appear at the same level

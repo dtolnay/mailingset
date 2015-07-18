@@ -1,7 +1,7 @@
 17a18,25
 > 
 > # This file has been lightly modified to remove dependencies on parts of GNU
-> # Mailman not important for mailing-set. The original is available at:
+> # Mailman not important for Mailing Set. The original is available at:
 > # http://bazaar.launchpad.net/~mailman-coders/mailman/3.0/view/7341/src/mailman/handlers/subject_prefix.py
 > # For comparison, the original is also provided here as subject_prefix.orig.py
 > # and a diff is provided as subject_prefix.py.diff.
