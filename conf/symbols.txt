@@ -1,3 +1,4 @@
-alist:AA
-blist:BB
-clist:CC
+cat-owners:Cat
+dog-owners:Dog
+pet-owners:Pet
+san-franciscans:SF

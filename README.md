@@ -149,9 +149,9 @@ the server.
 List symbols are used in constructing subject tags. They are configured in a
 text file, typically called `symbols.txt`. The file should look like this:
 
-    san-franciscans:SF
-    dog-owners:Dog
     cat-owners:Cat
+    dog-owners:Dog
+    san-franciscans:SF
 
 Then a message addressed to `san-franciscans_&_{dog-owners_|_cat-owners}` would
 be tagged like this:
