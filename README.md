@@ -1,5 +1,6 @@
 # Mailing Set
 [![Build Status](https://travis-ci.org/dtolnay/mailingset.svg?branch=master)](https://travis-ci.org/dtolnay/mailingset)
+[![Coverage Status](https://coveralls.io/repos/dtolnay/mailingset/badge.svg?branch=master&service=github)](https://coveralls.io/github/dtolnay/mailingset?branch=master)
 
 A mailing list server that treates mailing lists as sets and allows mail to be
 sent to the result of set-algebraic expressions on those sets. The union,

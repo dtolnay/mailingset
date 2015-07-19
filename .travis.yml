@@ -8,11 +8,15 @@ python:
 
 install:
     - pip install -e .
+    - pip install coveralls
 
 script:
-    - trial tests/*_test.py
+    - coverage run --source=mailingset `which trial` tests/*_test.py
     - twistd -y bin/mailingset.tac
     - kill $(cat twistd.pid)
+
+after_success:
+    - coveralls
 
 notifications:
     email: false
