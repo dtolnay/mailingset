@@ -3,3 +3,5 @@ _trial_temp/
 build/
 mailingset.egg-info/
 mailingset.log
+twistd.log
+twistd.pid
