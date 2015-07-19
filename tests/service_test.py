@@ -147,12 +147,12 @@ class MailingSetTest(unittest.TestCase):
 
     def test_single_list(self):
         """Tests a message to a single list with no fancy set operations."""
-        client = self._client_proto('simple@test.local')
+        client = self._client_proto('named@test.local')
 
         def validate(to_addrs, msg):
             """Validates that the recipient and subject are set correctly."""
-            self.assertEqual(set(['a@test.local', 'b@test.local']), to_addrs)
-            self.assertEqual('[Simple] subject', msg['Subject'])
+            self.assertEqual(set(['b@test.local', 'c@test.local']), to_addrs)
+            self.assertEqual('[Named] subject', msg['Subject'])
         server = self._server_proto(validate)
 
         return loopback.loopbackTCP(server, client)
@@ -200,7 +200,7 @@ class MailingSetTest(unittest.TestCase):
         server.dataReceived('MAIL FROM: sender@test.local\r\n')
         response1 = trans.value()
         trans.clear()
-        server.dataReceived('RCPT TO: simple@test.local\r\n')
+        server.dataReceived('RCPT TO: named@test.local\r\n')
         response2 = trans.value()
         trans.clear()
         server.dataReceived('DATA\r\n')

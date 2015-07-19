@@ -44,10 +44,10 @@ class StateTest(unittest.TestCase):
 
     def test_lists(self):
         expected = {
-            'simple':  set(x + '@test.local' for x in 'ab'),
-            'complex': set(x + '@test.local' for x in 'abc'),
+            'empty':   set(),
+            'named':   set(x + '@test.local' for x in 'bc'),
             'nested':  set(x + '@test.local' for x in 'abc'),
-            'empty':   set()}
+            'unnamed': set(x + '@test.local' for x in 'ab')}
         self.assertEqual(expected, self.state._lists)
 
     def test_aliases(self):
@@ -67,9 +67,9 @@ class StateTest(unittest.TestCase):
             'b@test.local': 'yz',
             'c@test.local': 'wxy',
             'empty':        'x',
-            'complex':      'T',
-            'nested':       'N',
-            'simple':       'S'}
+            'named':        'N',
+            'nested':       'nest',
+            'unnamed':      'UN'}
         self.assertEqual(expected, self.state._symbols)
 
     def test_resolve_by_email(self):
@@ -85,8 +85,8 @@ class StateTest(unittest.TestCase):
         self.assertEqual(expected, self.state('yy.zz'))
 
     def test_resolve_by_list(self):
-        expected = ('S', set(['a@test.local', 'b@test.local']))
-        self.assertEqual(expected, self.state('simple'))
+        expected = ('UN', set(['a@test.local', 'b@test.local']))
+        self.assertEqual(expected, self.state('unnamed'))
 
     def test_fail_missing(self):
         expected = 'No such list or person: missing'
