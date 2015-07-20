@@ -1,3 +1,4 @@
+# Mailing Set: set-algebraic operations on mailing lists
 # Copyright (C) 2015 by David Tolnay <dtolnay@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify

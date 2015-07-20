@@ -1,3 +1,4 @@
+# Mailing Set: set-algebraic operations on mailing lists
 # Copyright (C) 2015 by David Tolnay <dtolnay@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
@@ -27,7 +28,7 @@ def create_application():
     config = ConfigParser()
     config.read('conf/mailingset.conf')
 
-    mailingset_app = service.Application('Mailing-Set SMTP Server')
+    mailingset_app = service.Application('Mailing Set SMTP Server')
     incoming_port = config.getint('incoming', 'port')
     mailingset_factory = SetSMTPFactory(config, smtp.sendmail)
     mailingset_service = internet.TCPServer(incoming_port, mailingset_factory)

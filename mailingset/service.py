@@ -1,3 +1,4 @@
+# Mailing Set: set-algebraic operations on mailing lists
 # Copyright (C) 2015 by David Tolnay <dtolnay@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
@@ -14,6 +15,15 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
+"""The Twisted classes for the Mailing Set SMTP server.
+
+Mailing Set can be added to a Twisted application using the following code:
+
+    factory = SetSMTPFactory(config, sendmail)
+    service = internet.TCPServer(port, factory)
+    service.setServiceParent(application)
+
+"""
 import email
 from email import Header
 from email import parser
@@ -24,10 +34,10 @@ from zope.interface import implementer
 from twisted.mail import smtp
 from twisted.python import log
 
+from mailman import subject_prefix
+
 from state import MailingSetState
 import parser
-
-from mailman import subject_prefix
 
 
 __all__ = ['SetSMTPFactory']
@@ -63,6 +73,9 @@ class SetSMTPFactory(smtp.SMTPFactory):
             addr: The (host,port) pair of the newly established connection. Not
                 used by this factory because all connections use the same
                 protocol.
+
+        Returns:
+            The protocol, an implementation of IProtocol.
         """
         protocol = smtp.ESMTP()
         protocol.delivery = SetMessageDelivery(protocol, self.config,
@@ -218,7 +231,7 @@ class SetMessage(object):
         the appropriate recipients, including the archival address if one is
         present in the server config.
 
-        Specified by the IMessage interface.
+        Specified by IMessage interface.
 
         Returns:
             A Deferred responsible for sending the message through the outgoing
@@ -273,7 +286,7 @@ class SetMessage(object):
             pass
 
         # set Precedence header to identify message as mailing list traffic
-        if not msg.has_key('precedence'):
+        if 'precedence' not in msg:
             msg['Precedence'] = 'list'
 
         # List-* headers

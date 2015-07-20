@@ -122,7 +122,7 @@ configuration file is provided.
 #### List membership
 
 Lists are defined as text files with one address per line. The name of the file
-is the name of the lists.
+is the name of the list.
 
     lists/
       |-- cat-owners
