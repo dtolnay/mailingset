@@ -8,7 +8,7 @@ else:
     python2_requires = []
 
 setup(name='mailingset',
-      version='0.1.0-dev',
+      version='0.1.0',
       description='A mail server that supports set operations on mailing lists.',
       keywords='union intersection difference',
       url='https://github.com/dtolnay/mailingset',
