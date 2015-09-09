@@ -166,12 +166,12 @@ forward set-operation mail to Mailing Set by using a transport table. Refer to
 about transport tables. Assuming Mailing Set is running on port 2500, the line
 you want in your transport table is:
 
-    /^(.*_[&|-]_.*)@/    smtp:[localhost]:2500
+    /^(.*_[&|-]_.*)@/    smtp:[127.0.0.1]:2500
 
 Add this line to `/etc/postfix/transport` and run `postmap
 /etc/postfix/transport` to have Postfix rebuild its index of the transport
 table. Run `postmap -q 'a_&_b@yourdomain.com' regexp:/etc/postfix/transport` and
-verify that it prints out `smtp:[localhost]:2500`, meaning the message would be
+verify that it prints out `smtp:[127.0.0.1]:2500`, meaning the message would be
 rerouted.
 
 In your Postfix config file, typically `/etc/postfix/main.cf`, register the
