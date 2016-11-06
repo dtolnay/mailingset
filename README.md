@@ -82,7 +82,7 @@ operation messages. For example in Gmail the filter would be `list:mailingset`.
 
 ## Installation
 
-Requires Python 2.6 or 2.7.
+Requires Python 2.7.
 
 1. Clone this repo
 2. Run `pip install -e .`
